@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62238723732",
+    "project_id": "budgetboost-bf7ec",
+    "storage_bucket": "budgetboost-bf7ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62238723732:android:8455fd81a767f0c5b1ee81",
+        "android_client_info": {
+          "package_name": "com.emirsoylemez.budgetboost"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL-NqVFO7cxDI5M3FiWT1lmPVVq5ZzZMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
