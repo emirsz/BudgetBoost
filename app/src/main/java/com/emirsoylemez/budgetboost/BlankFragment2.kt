@@ -15,28 +15,30 @@ import com.google.firebase.ktx.Firebase
 class BlankFragment2 : Fragment() {
     private var _binding: FragmentBlank2Binding? = null
     private val binding get() = _binding!!
-    private val auth =  Firebase.auth
+    private val auth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
 
-    fun passwordSignUp(){
-        val email=binding.editTextSignName.text.toString()
-        val password=binding.editTextSignPass.text.toString()
-        if (email.equals("") || password.equals("")){
-            Toast.makeText(requireContext(),"Enter email and password", Toast.LENGTH_LONG).show()
-        }else{
-            auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
-                Toast.makeText(requireContext(),"Sign up successful",Toast.LENGTH_LONG).show()
+    fun passwordSignUp() {
+        val email = binding.editTextSignName.text.toString()
+        val password = binding.editTextSignPass.text.toString()
+        if (email.equals("") || password.equals("")) {
+            Toast.makeText(requireContext(), "Enter email and password", Toast.LENGTH_LONG).show()
+        } else {
+            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+                Toast.makeText(requireContext(), "Sign up successful", Toast.LENGTH_LONG).show()
                 //val intent=Intent(context,BlankFragment)
                 //val action = BlankFragment2Directions.actionBlankFragment2ToBlankFragment()
-               // Navigation.findNavController(view).navigate(action)
-                Navigation.findNavController(requireView()).navigate(R.id.action_blankFragment2_to_blankFragment)
+                // Navigation.findNavController(view).navigate(action)
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_blankFragment2_to_blankFragment)
             }
                 .addOnFailureListener { exception ->
-                    Toast.makeText(requireContext(),exception.localizedMessage,Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG)
+                        .show()
                 }
 
         }

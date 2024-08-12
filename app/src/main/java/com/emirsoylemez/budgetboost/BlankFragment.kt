@@ -8,31 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.emirsoylemez.budgetboost.databinding.FragmentBlankBinding
-
-
-
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 
 class BlankFragment : Fragment() {
 
     private var _binding: FragmentBlankBinding? = null
     private val binding get() = _binding!!
-    private val auth =  Firebase.auth
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private val auth = Firebase.auth
 
-
-
-
-
-
-
-     //  val temp =  passwordSignUp()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,80 +33,69 @@ class BlankFragment : Fragment() {
 
     }
 
-   /* fun passwordSignUp(){
-        val email=binding.editTextName.text.toString()
-        val password=binding.editTextPass.text.toString()
-        if (email.equals("") || password.equals("")){
-            Toast.makeText(requireContext(),"Enter email and password",Toast.LENGTH_LONG).show()
-        }
+    /* fun passwordSignUp(){
+         val email=binding.editTextName.text.toString()
+         val password=binding.editTextPass.text.toString()
+         if (email.equals("") || password.equals("")){
+             Toast.makeText(requireContext(),"Enter email and password",Toast.LENGTH_LONG).show()
+         }
 
-    }*/
+     }*/
 
-    fun gotoSignUp(view: View){
+    private fun gotoSignUp(view: View) {
         val action = BlankFragmentDirections.actionBlankFragmentToBlankFragment2()
         Navigation.findNavController(view).navigate(action)
     }
 
-    fun loginToApp(view:View){
-        val email=binding.editTextName.text.toString()
-        val password=binding.editTextPass.text.toString()
+    private fun loginToApp(view: View) {
+        val email = binding.editTextName.text.toString()
+        val password = binding.editTextPass.text.toString()
 
-        if(email.equals("") || password.equals("")){
-            Toast.makeText(requireContext(),"Enter email and password!",Toast.LENGTH_LONG).show()
+        if (email == "" || password == "") {
+            Toast.makeText(requireContext(), "Enter email and password!", Toast.LENGTH_LONG).show()
         } else {
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
                 Navigation.findNavController(view).navigate(action)
             }
-                .addOnFailureListener { expection ->
-                    Toast.makeText(requireContext(),"Yanlis girdin",Toast.LENGTH_LONG).show()
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Yanlis girdin", Toast.LENGTH_LONG).show()
                 }
         }
-
-
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
 
-       /* binding.buttonLog.setOnClickListener {
-               // passwordSignUp()
-        }*/
-
+        /* binding.buttonLog.setOnClickListener {
+                // passwordSignUp()
+         }*/
 
         val currentUser = auth.currentUser
-        if(currentUser != null){
+        if (currentUser != null) {
             val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
             Navigation.findNavController(view).navigate(action)
-            }
-        binding.buttonGotoSign.setOnClickListener {gotoSignUp(view)}
-        binding.buttonLog.setOnClickListener { loginToApp(view)
+        }
+        binding.buttonGotoSign.setOnClickListener { gotoSignUp(view) }
+        binding.buttonLog.setOnClickListener {
+            loginToApp(view)
         }
 
-
-
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /*
 
-
-/*
-
-val currentUser = auth.currentUser
-        if(currentUser != null){
-            val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
-            Navigation.findNavController(view).navigate(action)
- */
-
+    val currentUser = auth.currentUser
+            if(currentUser != null){
+                val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
+                Navigation.findNavController(view).navigate(action)
+     */
 
 
 }
