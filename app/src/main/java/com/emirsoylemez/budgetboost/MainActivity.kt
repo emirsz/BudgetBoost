@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.emirsoylemez.budgetboost.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,16 +26,13 @@ class MainActivity : AppCompatActivity() {
       //  setBottomNavigationVisibility(View.INVISIBLE)
 
 
-        binding.bottom.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home -> replaceFragment(HomeFragment())
+        binding.bottom.setOnItemSelectedListener { item ->
+            val navController = findNavController(R.id.fragmentContainerView)
+            when(item.itemId){
+                R.id.home -> navController.navigate(R.id.homeFragment)
                 //R.id.addExpense -> replaceFragment()
-                R.id.add -> replaceFragment(ExpenseFragment())
-                R.id.profile -> replaceFragment(ProfileFragment())
-
-                else ->{
-
-                }
+                R.id.add -> navController.navigate(R.id.expenseFragment)
+                R.id.profile -> navController.navigate(R.id.profileFragment)
             }
             true
         }
@@ -44,13 +42,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-    }
-
-    fun replaceFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView,fragment)
-        fragmentTransaction.commit()
     }
 
     fun setBottomNavigationVisibility(visibility: Int) {

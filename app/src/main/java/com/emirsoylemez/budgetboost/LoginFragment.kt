@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import com.emirsoylemez.budgetboost.databinding.FragmentBlankBinding
+import com.emirsoylemez.budgetboost.databinding.FragmentLoginBinding
+
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class BlankFragment : Fragment() {
+class LoginFragment : Fragment() {
 
-    private var _binding: FragmentBlankBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val auth = Firebase.auth
 
@@ -23,7 +24,7 @@ class BlankFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBlankBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         //binding.buttonLog.setOnClickListener {  }
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
@@ -43,7 +44,7 @@ class BlankFragment : Fragment() {
      }*/
 
     private fun gotoSignUp(view: View) {
-        val action = BlankFragmentDirections.actionBlankFragmentToBlankFragment2()
+        val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
         Navigation.findNavController(view).navigate(action)
     }
 
@@ -55,7 +56,7 @@ class BlankFragment : Fragment() {
             Toast.makeText(requireContext(), "Enter email and password!", Toast.LENGTH_LONG).show()
         } else {
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
+                val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                 Navigation.findNavController(view).navigate(action)
             }
                 .addOnFailureListener {
@@ -74,7 +75,7 @@ class BlankFragment : Fragment() {
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
             Navigation.findNavController(view).navigate(action)
         }
         binding.buttonGotoSign.setOnClickListener { gotoSignUp(view) }

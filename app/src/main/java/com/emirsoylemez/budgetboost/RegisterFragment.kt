@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import com.emirsoylemez.budgetboost.databinding.FragmentBlank2Binding
+import com.emirsoylemez.budgetboost.databinding.FragmentRegisterBinding
+
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class BlankFragment2 : Fragment() {
-    private var _binding: FragmentBlank2Binding? = null
+class RegisterFragment : Fragment() {
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val auth = Firebase.auth
 
@@ -34,7 +35,7 @@ class BlankFragment2 : Fragment() {
                 //val action = BlankFragment2Directions.actionBlankFragment2ToBlankFragment()
                 // Navigation.findNavController(view).navigate(action)
                 Navigation.findNavController(requireView())
-                    .navigate(R.id.action_blankFragment2_to_blankFragment)
+                    .navigate(R.id.action_registerFragment_to_loginFragment)
             }
                 .addOnFailureListener { exception ->
                     Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG)
@@ -50,7 +51,7 @@ class BlankFragment2 : Fragment() {
         savedInstanceState: Bundle?
     ): View {  // ?
 
-        _binding = FragmentBlank2Binding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root

@@ -7,100 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".EditFragment">
 
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clScreenTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/categorySpinner2"
-        android:layout_width="123dp"
-        android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/categoryText2"
-        android:layout_width="324dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="200dp"
-        android:text="Select the category of the expense"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/ivArrowBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/installmentsText2"
-        android:layout_width="316dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="Number of installments"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/payment_type_group2" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Edit Expense"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/expenseName2"
-        android:layout_width="316dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="46dp"
         android:ems="10"
         android:hint="Enter expense name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/clScreenTitle" />
 
     <EditText
         android:id="@+id/expenceAmount2"
-        android:layout_width="316dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="46dp"
         android:ems="10"
         android:hint="Enter amount of expense"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expenseName2" />
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Expense"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/payment_type_group2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469">
+        app:layout_constraintTop_toBottomOf="@+id/expenceAmount2">
 
         <RadioButton
             android:id="@+id/radio_cash2"
@@ -116,5 +91,54 @@
             android:layout_height="wrap_content"
             android:text="Installment" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/installmentsText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="46dp"
+        android:ems="10"
+        android:hint="Number of installments"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payment_type_group2" />
+
+    <TextView
+        android:id="@+id/categoryText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Select the category of the expense"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/addButton2"
+        app:layout_constraintStart_toStartOf="@id/categorySpinner2"
+        app:layout_constraintTop_toBottomOf="@id/installmentsText2" />
+
+    <Spinner
+        android:id="@+id/categorySpinner2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginEnd="114dp"
+        app:layout_constraintBottom_toBottomOf="@id/addButton2"
+        app:layout_constraintEnd_toStartOf="@id/addButton2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/addButton2" />
+
+
+    <Button
+        android:id="@+id/addButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="39dp"
+        android:text="Edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/categorySpinner2"
+        app:layout_constraintTop_toBottomOf="@id/categoryText2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

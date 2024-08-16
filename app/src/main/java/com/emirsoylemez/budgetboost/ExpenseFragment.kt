@@ -73,8 +73,9 @@ class ExpenseFragment : Fragment() {
             )
 
 
-
-            db.collection("expenses")
+//db.collection("expenses")
+//                .add(user)
+            db.collection("users").document("$userId").collection("expenses")
                 .add(user)
                 //.document("EXPENSES")
                 //.set(user)
