@@ -1,14 +1,11 @@
 package com.emirsoylemez.budgetboost
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
-import androidx.navigation.Navigation
 import com.emirsoylemez.budgetboost.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -33,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 //R.id.addExpense -> replaceFragment()
                 R.id.add -> replaceFragment(ExpenseFragment())
-                R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
 
                 else ->{
 
@@ -54,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView,fragment)
         fragmentTransaction.commit()
-
     }
 
     fun setBottomNavigationVisibility(visibility: Int) {

@@ -17,15 +17,15 @@ class BlankFragment2 : Fragment() {
     private val binding get() = _binding!!
     private val auth = Firebase.auth
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+   /* override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+    }*/
 
 
-    fun passwordSignUp() {
+    private fun passwordSignUp() {
         val email = binding.editTextSignName.text.toString()
         val password = binding.editTextSignPass.text.toString()
-        if (email.equals("") || password.equals("")) {
+        if (email == "" || password == "") {
             Toast.makeText(requireContext(), "Enter email and password", Toast.LENGTH_LONG).show()
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
@@ -40,9 +40,7 @@ class BlankFragment2 : Fragment() {
                     Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG)
                         .show()
                 }
-
         }
-
     }
 
 
@@ -50,7 +48,7 @@ class BlankFragment2 : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {  // ?
 
         _binding = FragmentBlank2Binding.inflate(inflater, container, false)
 
