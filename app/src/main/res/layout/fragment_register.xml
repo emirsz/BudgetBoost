@@ -5,18 +5,19 @@
     android:id="@+id/fragmentRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFragment">
+    tools:context=".RegisterFragment"
+    android:background="@drawable/back">
 
 
     <Button
         android:id="@+id/buttonSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSignPass" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassRegister" />
 
     <TextView
         android:id="@+id/textView3"
@@ -30,27 +31,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextSignName"
-        android:layout_width="316dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="Enter an email"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
-        android:id="@+id/editTextSignPass"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmailRegister"
         android:layout_width="316dp"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSignName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:ems="10"
+            android:hint="Enter an email" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassRegister"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Enter a password"
-        android:inputType="text"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSignName" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmailRegister">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSignPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter a password"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

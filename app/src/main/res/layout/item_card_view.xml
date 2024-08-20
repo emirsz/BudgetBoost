@@ -14,7 +14,9 @@
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        app:cardBackgroundColor="#37474f"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,14 +29,15 @@
                 android:id="@+id/tvExpenseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/more_options"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@android:color/white"/>
 
             <TextView
                 android:id="@+id/tvExpenseAmount"
@@ -42,7 +45,19 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvExpenseName"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvExpenseName"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tvCurrentlySymbol"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tvExpenseAmount"
+                app:layout_constraintTop_toTopOf="@+id/tvExpenseAmount"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="4dp"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"

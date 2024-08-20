@@ -5,7 +5,8 @@
     android:id="@+id/fragmentEdit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditFragment">
+    tools:context=".EditFragment"
+    android:background="@drawable/back">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clScreenTitle"
@@ -92,6 +93,50 @@
             android:text="Installment" />
     </RadioGroup>
 
+
+    <RadioGroup
+        android:id="@+id/money_type_group2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/installmentsText2">
+
+        <RadioButton
+            android:id="@+id/radio_tl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:text="₺"
+            android:textColor="#0A5C0A"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/radio_euro2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="€"
+            android:textColor="#0A5C0A"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/radio_dolar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="$"
+            android:textColor="#0A5C0A"
+            android:textSize="25sp" />
+    </RadioGroup>
+
     <EditText
         android:id="@+id/installmentsText2"
         android:layout_width="0dp"
@@ -110,11 +155,12 @@
         android:id="@+id/categoryText2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="84dp"
         android:text="Select the category of the expense"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/addButton2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/categorySpinner2"
         app:layout_constraintTop_toBottomOf="@id/installmentsText2" />
 
@@ -127,18 +173,19 @@
         app:layout_constraintBottom_toBottomOf="@id/addButton2"
         app:layout_constraintEnd_toStartOf="@id/addButton2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/addButton2" />
-
+        app:layout_constraintTop_toTopOf="@id/addButton2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/addButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="39dp"
         android:text="Edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/categorySpinner2"
         app:layout_constraintTop_toBottomOf="@id/categoryText2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

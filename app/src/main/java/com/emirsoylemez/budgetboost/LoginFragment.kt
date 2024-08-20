@@ -25,23 +25,9 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        //binding.buttonLog.setOnClickListener {  }
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_blank, container, false)
-
     }
-
-    /* fun passwordSignUp(){
-         val email=binding.editTextName.text.toString()
-         val password=binding.editTextPass.text.toString()
-         if (email.equals("") || password.equals("")){
-             Toast.makeText(requireContext(),"Enter email and password",Toast.LENGTH_LONG).show()
-         }
-
-     }*/
 
     private fun gotoSignUp(view: View) {
         val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
@@ -69,10 +55,6 @@ class LoginFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        /* binding.buttonLog.setOnClickListener {
-                // passwordSignUp()
-         }*/
-
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
@@ -89,14 +71,4 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    /*
-
-    val currentUser = auth.currentUser
-            if(currentUser != null){
-                val action = BlankFragmentDirections.actionBlankFragmentToHomeFragment()
-                Navigation.findNavController(view).navigate(action)
-     */
-
-
 }

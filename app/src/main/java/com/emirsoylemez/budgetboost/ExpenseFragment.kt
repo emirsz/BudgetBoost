@@ -24,7 +24,6 @@ class ExpenseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentExpenseBinding.inflate(inflater, container, false)
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         binding.installmentsText.visibility = View.INVISIBLE
@@ -49,7 +48,17 @@ class ExpenseFragment : Fragment() {
         val installments =
             if (paymentType == "Installment") installmentsText.toIntOrNull() else null
 
+        val moneyType = when (binding.moneyTypeGroup.checkedRadioButtonId){
+            R.id.radio_tl -> "₺"
+            R.id.radio_euro -> "€"
+            R.id.radio_dolar -> "$"
+            else ->null
+        }
+
+
         val selectedCategory = binding.categorySpinner.selectedItem.toString()
+
+
 
         if (expenseName == "" || expenseAmount == null || paymentType == null) {
             Toast.makeText(
@@ -69,16 +78,16 @@ class ExpenseFragment : Fragment() {
                 "category" to selectedCategory,
                 "userId" to userId,
                 "Id" to id,
+                "moneyType" to moneyType,
                 "timestamp" to com.google.firebase.Timestamp.now()
+
             )
 
 
-//db.collection("expenses")
-//                .add(user)
+            //db.collection("expenses")
+            //                .add(user)
             db.collection("users").document("$userId").collection("expenses")
                 .add(user)
-                //.document("EXPENSES")
-                //.set(user)
                 .addOnSuccessListener { documentReference ->
                     val documentId = documentReference.id
                     documentReference.update("id", documentId)
@@ -98,6 +107,9 @@ class ExpenseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.moneyTypeGroup.check(R.id.radio_tl)
+
         binding.addButton.setOnClickListener { logExpense() }
         binding.paymentTypeGroup.setOnCheckedChangeListener { _, checkedId ->
             binding.installmentsText.visibility = if (checkedId == R.id.radio_installments) {

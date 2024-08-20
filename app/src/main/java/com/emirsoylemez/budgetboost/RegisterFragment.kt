@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.emirsoylemez.budgetboost.databinding.FragmentRegisterBinding
-
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -17,10 +16,6 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val auth = Firebase.auth
-
-   /* override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }*/
 
 
     private fun passwordSignUp() {
@@ -44,28 +39,23 @@ class RegisterFragment : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {  // ?
+    ): View {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_blank2, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSign.setOnClickListener { passwordSignUp() }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

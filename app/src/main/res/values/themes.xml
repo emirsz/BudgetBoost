@@ -3,6 +3,9 @@
     <style name="Base.Theme.BudgetBoost" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/button</item>
+        <item name="colorPrimaryDark">@color/button</item>
+        <item name="colorAccent">@color/button</item>
     </style>
 
     <style name="Theme.BudgetBoost" parent="Base.Theme.BudgetBoost" />

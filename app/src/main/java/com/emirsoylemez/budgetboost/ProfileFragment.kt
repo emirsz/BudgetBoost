@@ -28,9 +28,7 @@ class ProfileFragment : Fragment() {
 
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
-        //return inflater.inflate(R.layout.fragment_profile, container, false)
         return binding.root
     }
     private fun logOut() {
@@ -50,8 +48,6 @@ class ProfileFragment : Fragment() {
         currentUser?.let {
             binding.pemailText.text = it.email
         }
-
-
     }
 
     override fun onDestroyView() {

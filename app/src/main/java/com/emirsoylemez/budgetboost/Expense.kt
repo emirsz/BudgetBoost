@@ -12,5 +12,6 @@ data class Expense(
         var installments : Int? = null,
         var paymentType : String? = null,
         var category : String? = null,
+        var moneyType : String? = null,
         var timestamp: com.google.firebase.Timestamp? = null
 ):Parcelable

@@ -6,26 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
     android:orientation="vertical"
-
+    android:background="@drawable/back"
     >
-
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:layout_marginTop="0dp"
-        android:text="HOME"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15sp"
+        android:fontFamily="sans-serif"
+        android:text="BUDGETBOOST"
         android:textAlignment="center"
-        android:textSize="50sp" />
+        android:textColor="#37474f"
+        android:textSize="40sp" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:iconifiedByDefault="false"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="15dp"/>
 
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emptyView"
+        android:text="List is empty. Please add an object."
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/downimage"
+        android:src="@drawable/downarrow"
+        android:layout_gravity="center"
         />
 
 </LinearLayout>

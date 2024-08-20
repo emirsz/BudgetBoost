@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.emirsoylemez.budgetboost.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,11 +19,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-       // replaceFragment(HomeFragment())
-       // setContentView(R.layout.activity_main)
-
-      //  setBottomNavigationVisibility(View.INVISIBLE)
-
+        // replaceFragment(HomeFragment())
+        // setContentView(R.layout.activity_main)
+        // setBottomNavigationVisibility(View.INVISIBLE)
 
         binding.bottom.setOnItemSelectedListener { item ->
             val navController = findNavController(R.id.fragmentContainerView)
@@ -48,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
         bottomNavigationView.visibility = visibility
     }
-
 
 /*
     fun menuFragment(view:View) {

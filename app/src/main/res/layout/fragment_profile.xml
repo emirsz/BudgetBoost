@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:background="@drawable/back">
+
 
     <TextView
         android:id="@+id/textView5"
@@ -17,23 +19,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.062" />
 
-    <TextView
-        android:id="@+id/profilemail"
-        android:layout_width="69dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="176dp"
-        android:text="Email: "
-        android:textSize="20sp"
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/pemailText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/buttonLogOut"
-        android:layout_width="342dp"
+        android:layout_width="280dp"
         android:layout_height="78dp"
         android:layout_marginBottom="72dp"
         android:text="Log Out"
@@ -48,10 +51,22 @@
         android:id="@+id/pemailText"
         android:layout_width="247dp"
         android:layout_height="39dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="332dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toEndOf="@+id/profilemail"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profilemail"
+        android:layout_width="69dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="332dp"
+        android:text="Email: "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
