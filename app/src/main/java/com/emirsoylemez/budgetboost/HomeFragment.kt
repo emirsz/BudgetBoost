@@ -73,10 +73,10 @@ class HomeFragment : Fragment() {
                 expenseList.clear()
                 expenseList.addAll(expense)
                 expenseadapter.submitList(expense)
-                if(expense.isEmpty()){
+                if (expense.isEmpty()) {
                     binding.recyclerView.visibility = View.GONE
                     binding.emptyView.visibility = View.VISIBLE
-                }else{
+                } else {
                     binding.recyclerView.visibility = View.VISIBLE
                     binding.emptyView.visibility = View.GONE
                 }
@@ -98,7 +98,8 @@ class HomeFragment : Fragment() {
                 if (!expense.id.isNullOrEmpty()) {
                     Log.d("ExpenseID", "Expense ID: ${expense.id}")
                     //db.collection("expenses").document(expense.id)
-                    db.collection("users").document("$userId").collection("expenses").document(expense.id)
+                    db.collection("users").document("$userId").collection("expenses")
+                        .document(expense.id)
                         .delete()
                         .addOnSuccessListener {
                             /*Toast.makeText(requireContext(), "Expense deleted", Toast.LENGTH_SHORT)
@@ -107,10 +108,10 @@ class HomeFragment : Fragment() {
                             if (position != -1) {
                                 expenseadapter.expenseList.removeAt(position)
                                 expenseadapter.notifyItemRemoved(position)
-                                if(expenseadapter.expenseList.isEmpty()){
+                                if (expenseadapter.expenseList.isEmpty()) {
                                     binding.recyclerView.visibility = View.GONE
                                     binding.emptyView.visibility = View.VISIBLE
-                                }else{
+                                } else {
                                     binding.recyclerView.visibility = View.VISIBLE
                                     binding.emptyView.visibility = View.GONE
                                 }
@@ -138,9 +139,8 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    private fun setupSearch(){
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+    private fun setupSearch() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     filterExpenses(it)
@@ -158,9 +158,9 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun filterExpenses(query:String){
+    private fun filterExpenses(query: String) {
         val filterList = expenseList.filter {
-            it.nameOfExpense?.contains(query,ignoreCase = true)==true
+            it.nameOfExpense?.contains(query, ignoreCase = true) == true
         }
         expenseadapter.submitList(filterList)
     }

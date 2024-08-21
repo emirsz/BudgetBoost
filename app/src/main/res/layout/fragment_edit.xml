@@ -5,8 +5,8 @@
     android:id="@+id/fragmentEdit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditFragment"
-    android:background="@drawable/back">
+    android:background="@drawable/back"
+    tools:context=".EditFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clScreenTitle"

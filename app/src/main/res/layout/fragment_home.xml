@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment"
-    android:orientation="vertical"
     android:background="@drawable/back"
-    >
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
 
     <TextView
         android:id="@+id/textView6"
@@ -22,35 +20,33 @@
         android:textSize="40sp" />
 
     <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:iconifiedByDefault="false"
-        />
+        android:iconifiedByDefault="false" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="15dp"/>
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/emptyView"
-        android:text="List is empty. Please add an object."
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_gravity="center"
-        />
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/downimage"
-        android:src="@drawable/downarrow"
         android:layout_gravity="center"
-        />
+        android:gravity="center"
+        android:text="List is empty. Please add an object."
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/downimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/downarrow" />
 
 </LinearLayout>

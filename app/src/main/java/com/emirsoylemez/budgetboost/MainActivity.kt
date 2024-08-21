@@ -1,8 +1,12 @@
 package com.emirsoylemez.budgetboost
 
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsetsController
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
@@ -19,13 +23,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.backgr)
+
         // replaceFragment(HomeFragment())
         // setContentView(R.layout.activity_main)
         // setBottomNavigationVisibility(View.INVISIBLE)
 
         binding.bottom.setOnItemSelectedListener { item ->
             val navController = findNavController(R.id.fragmentContainerView)
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.home -> navController.navigate(R.id.homeFragment)
                 //R.id.addExpense -> replaceFragment()
                 R.id.add -> navController.navigate(R.id.expenseFragment)
@@ -45,18 +52,5 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
         bottomNavigationView.visibility = visibility
     }
-
-/*
-    fun menuFragment(view:View) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-
-        val firstFragment = BlankFragment()
-        fragmentTransaction.add(R.id.frameLayout, firstFragment)
-    }
-
- */
-
-
 
 }

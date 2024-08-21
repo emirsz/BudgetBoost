@@ -31,11 +31,12 @@ class ProfileFragment : Fragment() {
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         return binding.root
     }
+
     private fun logOut() {
-        if(auth.currentUser != null){
-                    auth.signOut()
-                    Navigation.findNavController(requireView())
-                        .navigate(R.id.action_profileFragment_to_loginFragment)
+        if (auth.currentUser != null) {
+            auth.signOut()
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_profileFragment_to_loginFragment)
         }
     }
 

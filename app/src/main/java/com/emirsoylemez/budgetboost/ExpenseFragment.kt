@@ -29,7 +29,8 @@ class ExpenseFragment : Fragment() {
         binding.installmentsText.visibility = View.INVISIBLE
 
         val categories = resources.getStringArray(R.array.expense_categories)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
+        val adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.categorySpinner.adapter = adapter
 
@@ -48,11 +49,11 @@ class ExpenseFragment : Fragment() {
         val installments =
             if (paymentType == "Installment") installmentsText.toIntOrNull() else null
 
-        val moneyType = when (binding.moneyTypeGroup.checkedRadioButtonId){
+        val moneyType = when (binding.moneyTypeGroup.checkedRadioButtonId) {
             R.id.radio_tl -> "₺"
             R.id.radio_euro -> "€"
             R.id.radio_dolar -> "$"
-            else ->null
+            else -> null
         }
 
 
@@ -101,7 +102,12 @@ class ExpenseFragment : Fragment() {
 
                     Log.d(TAG, "DocumentSnapshot successfully written with ID: $documentId")
                 }
-                .addOnFailureListener { _ -> Log.w(TAG, "Error writing document")}  // burdda _ yerine e vardı
+                .addOnFailureListener { _ ->
+                    Log.w(
+                        TAG,
+                        "Error writing document"
+                    )
+                }  // burdda _ yerine e vardı
         }
     }
 
