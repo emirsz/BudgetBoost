@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.home
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -12,6 +12,8 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.emirsoylemez.budgetboost.ui.Expense
+import com.emirsoylemez.budgetboost.ui.MainActivity
 import com.emirsoylemez.budgetboost.databinding.FragmentHomeBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,7 +25,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val db = Firebase.firestore
-    private lateinit var expenseadapter: RecyclerViewAdapter
+    private lateinit var expenseadapter: ExpenseAdapter
     private val expenseList = ArrayList<Expense>()
     private val auth = Firebase.auth
     val userId = auth.currentUser?.uid
@@ -49,7 +51,7 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        expenseadapter = RecyclerViewAdapter().apply {
+        expenseadapter = ExpenseAdapter().apply {
             setOnMenuClickListener(
                 onEditClick = { expense ->
                     val action = HomeFragmentDirections.actionHomeFragmentToEditFragment(expense)

@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.edit
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.emirsoylemez.budgetboost.ui.Expense
+import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.FragmentEditBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

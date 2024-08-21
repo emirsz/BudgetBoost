@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.emirsoylemez.budgetboost.LoginFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.emirsoylemez.budgetboost.RegisterFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.emirsoylemez.budgetboost.HomeFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
 
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/expenseFragment"
-        android:name="com.emirsoylemez.budgetboost.ExpenseFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.expense.ExpenseFragment"
         android:label="fragment_expense"
         tools:layout="@layout/fragment_expense" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.emirsoylemez.budgetboost.EditFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.edit.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" >
         <action
@@ -66,12 +66,12 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="expense"
-            app:argType="com.emirsoylemez.budgetboost.Expense" />
+            app:argType="com.emirsoylemez.budgetboost.ui.Expense" />
 
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.emirsoylemez.budgetboost.ProfileFragment"
+        android:name="com.emirsoylemez.budgetboost.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action

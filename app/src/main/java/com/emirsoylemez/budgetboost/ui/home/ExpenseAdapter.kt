@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.emirsoylemez.budgetboost.ui.Expense
+import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.ItemCardViewBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
 
     val expenseList = mutableListOf<Expense>()
     private var onEditClick: ((Expense) -> Unit)? = null

@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.expense
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.emirsoylemez.budgetboost.ui.MainActivity
+import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.FragmentExpenseBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

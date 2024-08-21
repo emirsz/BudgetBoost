@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

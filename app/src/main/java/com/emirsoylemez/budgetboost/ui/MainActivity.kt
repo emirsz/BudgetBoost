@@ -1,15 +1,13 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui
 
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowInsetsController
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
+import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

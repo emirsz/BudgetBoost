@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost
+package com.emirsoylemez.budgetboost.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.emirsoylemez.budgetboost.ui.MainActivity
 import com.emirsoylemez.budgetboost.databinding.FragmentLoginBinding
 
 import com.google.firebase.auth.ktx.auth
