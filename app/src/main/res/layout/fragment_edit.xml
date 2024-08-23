@@ -39,33 +39,45 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/expenseName2"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEditName"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="Enter expense name"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clScreenTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/clScreenTitle">
 
-    <EditText
-        android:id="@+id/expenceAmount2"
-        android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/expenseName2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Enter expense name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEditAmount"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="Enter amount of expense"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expenseName2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/expenceAmount2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Enter amount of expense"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
         android:id="@+id/payment_type_group2"
@@ -76,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expenceAmount2">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditAmount">
 
         <RadioButton
             android:id="@+id/radio_cash2"
@@ -93,7 +105,6 @@
             android:text="Installment" />
     </RadioGroup>
 
-
     <RadioGroup
         android:id="@+id/money_type_group2"
         android:layout_width="match_parent"
@@ -102,9 +113,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/installmentsText2">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditNumberInstallment">
 
         <RadioButton
             android:id="@+id/radio_tl2"
@@ -137,19 +147,26 @@
             android:textSize="25sp" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/installmentsText2"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEditNumberInstallment"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="Number of installments"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/payment_type_group2" />
+        app:layout_constraintTop_toBottomOf="@id/payment_type_group2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/installmentsText2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Number of installments"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/categoryText2"
@@ -162,7 +179,7 @@
         app:layout_constraintEnd_toEndOf="@id/addButton2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/categorySpinner2"
-        app:layout_constraintTop_toBottomOf="@id/installmentsText2" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEditNumberInstallment" />
 
     <Spinner
         android:id="@+id/categorySpinner2"

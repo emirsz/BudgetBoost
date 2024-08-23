@@ -46,17 +46,18 @@ class EditFragment : Fragment() {
         }
 
         binding.paymentTypeGroup2.setOnCheckedChangeListener { _, checkedId ->
-            binding.installmentsText2.visibility = if (checkedId == R.id.radio_installments2) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
+            binding.textInputLayoutEditNumberInstallment.visibility =
+                if (checkedId == R.id.radio_installments2) {
+                    View.VISIBLE
+                } else {
+                    View.GONE
+                }
         }
 
         expense = args.expense
         binding.expenseName2.setText(expense.nameOfExpense)
         binding.expenceAmount2.setText(expense.amountOfExpense.toString())
-        binding.installmentsText2.setText(expense.installments.toString())
+        binding.installmentsText2.setText(expense.installments?.toString() ?: "")
 
         when (expense.paymentType) {
             "Cash" -> binding.paymentTypeGroup2.check(R.id.radio_cash)

@@ -66,7 +66,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/white"
+                android:background="@drawable/rounded_border"
+                android:padding="6dp"
+                android:textColor="#754C10"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvExpenseAmount"
                 tools:text="category" />
@@ -110,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="View all installments"
-                android:textColor="#e8ddc3"
+                android:textColor="#E7D9BA"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/more_options"
                 app:layout_constraintTop_toBottomOf="@+id/tvPaymentType" />

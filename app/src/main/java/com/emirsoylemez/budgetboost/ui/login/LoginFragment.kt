@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.navigation.Navigation
 import com.emirsoylemez.budgetboost.ui.MainActivity
 import com.emirsoylemez.budgetboost.databinding.FragmentLoginBinding
@@ -66,6 +67,9 @@ class LoginFragment : Fragment() {
             loginToApp(view)
         }
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().finish()
+        }
     }
 
     override fun onDestroyView() {

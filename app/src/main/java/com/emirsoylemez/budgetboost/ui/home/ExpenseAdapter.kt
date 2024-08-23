@@ -33,7 +33,6 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
     }
 
     class ViewHolder(val binding: ItemCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
-
         private fun calculateInstallments(
             totalAmount: Double,
             installments: Int,
@@ -54,14 +53,12 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
                 }
 
                 val month = SimpleDateFormat("MMMM ", Locale("en")).format(calendar.time)
-                installmentList.add("$month: $roundedAmountPerInstallment")
+                installmentList.add("$month: $roundedAmountPerInstallment ")
                 totalCalculatedAmount += roundedAmountPerInstallment
                 calendar.add(Calendar.MONTH, 1)
             }
-
             return installmentList
         }
-
 
         fun bind(
             expense: Expense,
@@ -73,16 +70,12 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
             binding.tvCategoryText.text = expense.category
             binding.tvCurrentlySymbol.text = expense.moneyType
             binding.tvPaymentType.text = expense.paymentType
-//            binding.moneyTypeGroup.text=expense.moneyType
-//            val selectedCurrencyText = binding.selectedCurrency
-//            selectedCurrencyText.text=moneyType
 
             val timestamp = expense.timestamp
             val date: Date = timestamp!!.toDate()
             val dateFormat = SimpleDateFormat("MMMM", Locale("en"))
             val monthName = dateFormat.format(date)
             binding.tvDate.text = monthName
-
 
             binding.viewAllInstallments.visibility = if (expense.paymentType == "Installment") {
                 View.VISIBLE
@@ -100,7 +93,10 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
                     }
 
                     if (installmentList != null) {
-                        val adapter = InstallmentsAdapter(installmentList)
+                        val adapter = InstallmentsAdapter(
+                            installmentList,
+                            expense.moneyType ?: "$"
+                        )
                         binding.installmentsRecyclerView.adapter = adapter
                         binding.installmentsRecyclerView.layoutManager =
                             LinearLayoutManager(binding.root.context)

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.emirsoylemez.budgetboost.ui.MainActivity
 import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.FragmentExpenseBinding
@@ -28,7 +29,7 @@ class ExpenseFragment : Fragment() {
     ): View {
         _binding = FragmentExpenseBinding.inflate(inflater, container, false)
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
-        binding.installmentsText.visibility = View.INVISIBLE
+        binding.textInputLayoutAddInstallment.visibility = View.GONE
 
         val categories = resources.getStringArray(R.array.expense_categories)
         val adapter =
@@ -50,6 +51,11 @@ class ExpenseFragment : Fragment() {
         }
         val installments =
             if (paymentType == "Installment") installmentsText.toIntOrNull() else null
+
+//        if(paymentType == "Cash"){
+//            binding.installmentsText.setText("")
+//        }
+
 
         val moneyType = when (binding.moneyTypeGroup.checkedRadioButtonId) {
             R.id.radio_tl -> "₺"
@@ -111,6 +117,12 @@ class ExpenseFragment : Fragment() {
                     )
                 }  // burdda _ yerine e vardı
         }
+
+        val navController = findNavController()
+        navController.popBackStack()
+        navController.navigate(R.id.expenseFragment)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,14 +132,16 @@ class ExpenseFragment : Fragment() {
 
         binding.addButton.setOnClickListener { logExpense() }
         binding.paymentTypeGroup.setOnCheckedChangeListener { _, checkedId ->
-            binding.installmentsText.visibility = if (checkedId == R.id.radio_installments) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
+            binding.textInputLayoutAddInstallment.visibility =
+                if (checkedId == R.id.radio_installments) {
+                    View.VISIBLE
+                } else {
+                    View.GONE
+                }
         }
     }
 
+    //binding.installmentsText.visibility = if (checkedId == R.id.radio_installments) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

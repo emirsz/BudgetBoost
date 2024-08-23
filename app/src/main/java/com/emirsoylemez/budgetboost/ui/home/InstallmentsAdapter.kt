@@ -5,12 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.emirsoylemez.budgetboost.databinding.ItemInstallmentBinding
 
-class InstallmentsAdapter(private val installments: List<String>) :
+class InstallmentsAdapter(
+    private val installments: List<String>,
+    private val moneyType: String
+) :
     RecyclerView.Adapter<InstallmentsAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemInstallmentBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(installment: String) {
-            binding.installmentTextView.text = installment
+        fun bind(installment: String, moneyType: String) {
+            binding.installmentTextView.text = "$installment $moneyType"
         }
     }
 
@@ -21,7 +24,7 @@ class InstallmentsAdapter(private val installments: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(installments[position])
+        holder.bind(installments[position], moneyType)
     }
 
     override fun getItemCount(): Int {
