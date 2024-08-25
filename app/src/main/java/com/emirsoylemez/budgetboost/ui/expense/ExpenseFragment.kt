@@ -16,7 +16,9 @@ import com.emirsoylemez.budgetboost.databinding.FragmentExpenseBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExpenseFragment : Fragment() {
     private var _binding: FragmentExpenseBinding? = null
     private val binding get() = _binding!!
@@ -51,11 +53,6 @@ class ExpenseFragment : Fragment() {
         }
         val installments =
             if (paymentType == "Installment") installmentsText.toIntOrNull() else null
-
-//        if(paymentType == "Cash"){
-//            binding.installmentsText.setText("")
-//        }
-
 
         val moneyType = when (binding.moneyTypeGroup.checkedRadioButtonId) {
             R.id.radio_tl -> "₺"
@@ -115,7 +112,7 @@ class ExpenseFragment : Fragment() {
                         TAG,
                         "Error writing document"
                     )
-                }  // burdda _ yerine e vardı
+                }
         }
 
         val navController = findNavController()

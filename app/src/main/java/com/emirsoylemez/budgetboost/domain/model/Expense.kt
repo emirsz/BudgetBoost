@@ -1,4 +1,4 @@
-package com.emirsoylemez.budgetboost.ui
+package com.emirsoylemez.budgetboost.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

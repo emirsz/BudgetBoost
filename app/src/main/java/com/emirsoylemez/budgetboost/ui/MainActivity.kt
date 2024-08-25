@@ -10,7 +10,9 @@ import androidx.navigation.findNavController
 import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

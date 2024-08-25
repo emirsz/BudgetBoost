@@ -32,11 +32,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ImageView
+        android:layout_width="139dp"
+        android:layout_height="119dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/logo" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmailRegister"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="156dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"

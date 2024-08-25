@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.emirsoylemez.budgetboost.ui.Expense
+import com.emirsoylemez.budgetboost.domain.model.Expense
 import com.emirsoylemez.budgetboost.R
 import com.emirsoylemez.budgetboost.databinding.ItemCardViewBinding
 import java.text.SimpleDateFormat
@@ -59,6 +59,25 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ViewHolder>() {
             }
             return installmentList
         }
+
+        fun updateInstallments(expense: Expense) {
+            if (binding.installmentsRecyclerView.visibility == View.VISIBLE) {
+                val date: Date = expense.timestamp!!.toDate()
+
+                val installmentList = expense.amountOfExpense?.let {
+                    calculateInstallments(it, expense.installments ?: 1, date)
+                }
+
+                if (installmentList != null) {
+                    val adapter = InstallmentsAdapter(
+                        installments = installmentList,
+                        moneyType = expense.moneyType ?: "$"
+                    )
+                    binding.installmentsRecyclerView.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+                }
+            }
 
         fun bind(
             expense: Expense,

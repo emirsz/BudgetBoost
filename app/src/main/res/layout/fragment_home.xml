@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/back"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
@@ -24,6 +25,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:iconifiedByDefault="false" />
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTRY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="₺"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipEUR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="€"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipUSD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="$"
+            android:textColor="@color/chip_text_color"
+            app:chipBackgroundColor="@color/chip_background_color" />
+    </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -38,15 +75,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="List is empty. Please add an object."
+        android:text="List is empty! Please add an object."
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="17sp"
+        android:layout_marginTop="100dp"
+        android:textColor="#776C0F"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/downimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_width="300dp"
+        android:layout_height="430dp"
         android:layout_gravity="center"
-        android:src="@drawable/downarrow" />
+        app:srcCompat="@drawable/downarroww" />
 
 </LinearLayout>

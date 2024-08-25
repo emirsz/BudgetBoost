@@ -52,7 +52,7 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="expense"
-            app:argType="com.emirsoylemez.budgetboost.ui.Expense" />
+            app:argType="com.emirsoylemez.budgetboost.domain.model.Expense" />
 
     </fragment>
     <fragment

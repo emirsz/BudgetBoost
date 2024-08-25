@@ -10,17 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.emirsoylemez.budgetboost.ui.Expense
+import com.emirsoylemez.budgetboost.R
+import com.emirsoylemez.budgetboost.domain.model.Expense
 import com.emirsoylemez.budgetboost.ui.MainActivity
 import com.emirsoylemez.budgetboost.databinding.FragmentHomeBinding
+import com.emirsoylemez.budgetboost.util.Status
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +33,7 @@ class HomeFragment : Fragment() {
     private val expenseList = ArrayList<Expense>()
     private val auth = Firebase.auth
     val userId = auth.currentUser?.uid
-
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,9 +48,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
-        fetchExpenses()
+        viewModel=ViewModelProvider(this).get(HomeViewModel::class.java)
         setupRecyclerView()
         setupSearch()
+        setupChipGroupListener()
+        observeCurrencyData()
+        fetchExpenses()
     }
 
     private fun setupRecyclerView() {
@@ -75,19 +82,94 @@ class HomeFragment : Fragment() {
                 expenseList.clear()
                 expenseList.addAll(expense)
                 expenseadapter.submitList(expense)
-                if (expense.isEmpty()) {
-                    binding.recyclerView.visibility = View.GONE
-                    binding.emptyView.visibility = View.VISIBLE
-                } else {
-                    binding.recyclerView.visibility = View.VISIBLE
-                    binding.emptyView.visibility = View.GONE
+                with(binding){
+                    if (expense.isEmpty()) {
+                        recyclerView.visibility = View.GONE
+                        chipGroupExpenses.visibility=View.GONE
+                        emptyView.visibility = View.VISIBLE
+                        searchView.visibility = View.GONE
+                    } else {
+                        recyclerView.visibility = View.VISIBLE
+                        emptyView.visibility = View.GONE
+                        chipGroupExpenses.visibility = View.VISIBLE
+                        searchView.visibility = View.VISIBLE
+                    }
                 }
-
             }
             .addOnFailureListener { exception ->
                 println("Error getting documents: $exception")
             }
     }
+
+    private fun observeCurrencyData() {
+        viewModel.currencyData.observe(viewLifecycleOwner) { resource ->
+            when (resource.status) {
+                Status.SUCCESS -> {
+                    resource.data?.let { expenseResponse ->
+                        val selectedChipId = binding.chipGroupExpenses.checkedChipId
+                        val updatedExpenses = expenseList.map { expense ->
+                            val convertedAmount = when (expense.moneyType) {
+                                "₺" -> expense.amountOfExpense?.div(
+                                    expenseResponse.data["TRY"] ?: 1.0
+                                )
+
+                                "$" -> expense.amountOfExpense?.div(
+                                    expenseResponse.data["USD"] ?: 1.0
+                                )
+
+                                "€" -> expense.amountOfExpense?.div(
+                                    expenseResponse.data["EUR"] ?: 1.0
+                                )
+
+                                else -> expense.amountOfExpense
+                            }
+
+                            val updatedMoneyType: String? = when (selectedChipId) {
+                                R.id.chipTRY -> "₺"
+                                R.id.chipUSD -> "$"
+                                R.id.chipEUR -> "€"
+                                else -> expense.moneyType
+                            }
+
+                            val formattedAmount = String.format("%.1f", convertedAmount)
+                            val updatedExpense = expense.copy(
+                                amountOfExpense = formattedAmount.toDouble(),
+                                moneyType = updatedMoneyType
+                            )
+
+                            expenseadapter.expenseList.find { it.id == updatedExpense.id }?.let {
+                                val viewHolder = binding.recyclerView.findViewHolderForAdapterPosition(
+                                    expenseadapter.expenseList.indexOf(it)
+                                ) as? ExpenseAdapter.ViewHolder
+                                viewHolder?.updateInstallments(updatedExpense)
+                            }
+                            updatedExpense
+                        }
+                        expenseadapter.submitList(updatedExpenses)
+                    }
+                }
+
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
+                }
+
+                Status.LOADING -> {
+                    // no-op
+                }
+            }
+        }
+    }
+
+    private fun setupChipGroupListener() {
+        binding.chipGroupExpenses.setOnCheckedStateChangeListener { _, checkedIds ->
+            when (checkedIds.firstOrNull()) {
+                R.id.chipTRY -> viewModel.fetchExpenses("₺")
+                R.id.chipEUR -> viewModel.fetchExpenses("€")
+                R.id.chipUSD -> viewModel.fetchExpenses("$")
+                else -> fetchExpenses()
+            }
+            }
+        }
 
     private fun showDeletePopup(expense: Expense) {
         val alert = AlertDialog.Builder(binding.root.context)
@@ -104,18 +186,20 @@ class HomeFragment : Fragment() {
                         .document(expense.id)
                         .delete()
                         .addOnSuccessListener {
-                            /*Toast.makeText(requireContext(), "Expense deleted", Toast.LENGTH_SHORT)
-                                .show()*/
                             val position = expenseadapter.expenseList.indexOf(expense)
                             if (position != -1) {
                                 expenseadapter.expenseList.removeAt(position)
                                 expenseadapter.notifyItemRemoved(position)
-                                if (expenseadapter.expenseList.isEmpty()) {
-                                    binding.recyclerView.visibility = View.GONE
-                                    binding.emptyView.visibility = View.VISIBLE
-                                } else {
-                                    binding.recyclerView.visibility = View.VISIBLE
-                                    binding.emptyView.visibility = View.GONE
+                                with(binding){
+                                    if (expenseadapter.expenseList.isEmpty()) {
+                                        recyclerView.visibility = View.GONE
+                                        emptyView.visibility = View.VISIBLE
+                                        chipGroupExpenses.visibility = View.GONE
+                                    } else {
+                                        recyclerView.visibility = View.VISIBLE
+                                        emptyView.visibility = View.GONE
+                                        chipGroupExpenses.visibility = View.VISIBLE
+                                    }
                                 }
                             }
                         }
@@ -139,7 +223,6 @@ class HomeFragment : Fragment() {
         }
         alert.show()
     }
-
 
     private fun setupSearch() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -166,7 +249,6 @@ class HomeFragment : Fragment() {
         }
         expenseadapter.submitList(filterList)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -13,7 +13,9 @@ import com.emirsoylemez.budgetboost.databinding.FragmentLoginBinding
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
@@ -48,7 +50,7 @@ class LoginFragment : Fragment() {
                 Navigation.findNavController(view).navigate(action)
             }
                 .addOnFailureListener {
-                    Toast.makeText(requireContext(), "Yanlis girdin", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Password is not true!", Toast.LENGTH_LONG).show()
                 }
         }
     }
