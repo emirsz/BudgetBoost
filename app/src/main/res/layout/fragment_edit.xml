@@ -76,7 +76,7 @@
             android:layout_height="match_parent"
             android:ems="10"
             android:hint="Enter amount of expense"
-            android:inputType="text" />
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
@@ -164,7 +164,7 @@
             android:layout_height="match_parent"
             android:ems="10"
             android:hint="Number of installments"
-            android:inputType="text" />
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
