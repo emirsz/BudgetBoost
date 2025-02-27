@@ -11,7 +11,7 @@ BudgetBoost is an application designed to simplify personal finance management. 
 2. Clone the repo  
    ```sh
    git clone https://github.com/emirsz/BudgetBoost
-3. Enter your API in local.properties
+3. Enter your API in **`local.properties`**
     ```sh
     API_KEY='ENTER YOUR API'
 
